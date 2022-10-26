@@ -6,18 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-http://www.springframework.org/schema/beans ">
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-    <bean id="musicBean"
-          class="ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic">
-    </bean>
-    <bean id="MusicPlayer"
-          class="MusicPlayer">
-        <property name="music" ref="musicBean"/>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+        http://www.springframework.org/schema/beans ">
+
+    <context:component-scan base-package="Task21"/>
 </beans>
