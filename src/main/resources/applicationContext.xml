@@ -9,13 +9,15 @@
 http://www.springframework.org/schema/beans ">
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
     <bean id="musicBean"
-          class="ClassicalMusic">
+          class="ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
-<bean id="MusicPlayer"
-class="MusicPlayer">
-<property name="music" ref="musicBean"/>
-
-    <property name="name" value="${musicPlayer.name}"/>
-    <property name="volume" value="${musicPlayer.volume}"/>
-</bean>
+    <bean id="MusicPlayer"
+          class="MusicPlayer">
+        <property name="music" ref="musicBean"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
 </beans>
